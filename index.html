@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons|Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <title>TodoVue | Application de todolist avec Vue.js</title>
+    </head>
+    <body>
+        
+        <h1>Todo list Application</h1>
+
+        <main class="container" id="Todo-list-app">
+            <!--formulaire de création et ajout d'une nouvelle tâche:-->
+            <form>
+                <input v-model="newTaskTitle" type="text" placeholder="Donner l'intitulé de la tâche" value="">
+                <button v-on:click.prevent="addTask()" class="waves-effect waves-light btn" >Ajouter tâche</button><!--Le prevent permet d'éviter le rechargement automatique de la page au moment du clique-->
+            </form>
+
+            <!--Me génère une liste des tâches:-->
+            <div class="container-task">
+                <div v-for="(elements, index) in listOfTask" class="cadre">
+                    <input type="checkbox" :id=" 't_' + index" v-model="elements.isDone">
+                    <label :for="'t_' + index">{{elements.label}}</label>
+                    
+                    <button v-on:click.prevent="removeTask()" class="deleteButton btn-floating btn-large waves-effect waves-light red">
+                        <i class="small material-icons">delete_forever</i>
+                    </button>
+                </div>
+                <p>Il reste {{taskInRest() | pluriel('tâche')}}  sur les {{listOfTask.length | pluriel('tâche')}} total à faire</p>
+            </div>
+            <!--
+                Phrase du dessus avec les computed properties:
+            -->
+        </main>
+
+        <!--Scripts:-->
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+        <script src="scripts/main.js"></script>
+    </body>
+</html>

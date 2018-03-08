@@ -1,0 +1,27 @@
+.link-delete {
+    color: crimson;
+    display: inline-block;
+    vertical-align: middle;
+}
+.link-delete:hover {
+    color: darkred;
+}
+
+.cadre {
+    border: 2px solid black;
+    border-radius:100px;
+    width:100%;
+}
+
+.cadre > input{
+    padding-bottom:100px;
+}
+
+.deleteButton{
+    margin-left:800px;
+}
+
+.container-task{
+    padding-top:100px;
+}
+
